@@ -14,4 +14,4 @@ GET BOT API AND PASTE IN tinar.py
 
 
 RUN:
-python tinar.py</p>
+python tinar.py <p/>
