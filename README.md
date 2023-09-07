@@ -7,5 +7,10 @@ control your windows computeur from telegram
 INSTALLATION:
 pip install -r requirements.txt
 
+GET BOT API AND PASTE IN tinar.py
+
+![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/27f187d2-b6ed-45c6-bdfd-6d8247cc0f46)
+
+
 RUN:
 python tinar.py
