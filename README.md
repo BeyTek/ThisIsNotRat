@@ -13,7 +13,6 @@ GET BOT API AND PASTE IN tinar.py
 ![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/e05a6070-e841-45c1-9592-045263ac4499)
 
 
-<p align="center">
 RUN:
 python tinar.py 
 
