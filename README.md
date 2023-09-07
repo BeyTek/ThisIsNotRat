@@ -52,3 +52,9 @@ python tinar.py
 /speech [hi]  to speech tts.💬
 
 /shutdown  🙅
+
+
+DEMO
+
+https://github.com/RealBey/ThisIsNotRat/assets/85953451/4da75b5f-413a-4584-a07d-94d4b2a1dd6a
+
