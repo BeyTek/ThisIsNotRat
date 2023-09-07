@@ -9,7 +9,8 @@ pip install -r requirements.txt
 
 GET BOT API AND PASTE IN tinar.py
 
-![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/27f187d2-b6ed-45c6-bdfd-6d8247cc0f46)
+![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/e05a6070-e841-45c1-9592-045263ac4499)
+
 
 
 RUN:
