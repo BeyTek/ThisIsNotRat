@@ -6,7 +6,7 @@
 👀Control your windows computeur from telegram 👀
 
 
-![ideogram (10)](https://github.com/RealBey/ThisIsNotRat/assets/85953451/93a16ce3-de38-4de4-b7db-19e772971272)
+<a href="https://ibb.co/SRWX61h"><img src="https://i.ibb.co/J50Rcbf/ideogram-15.jpg" alt="ideogram-15" border="0"></a>
 
 
 
