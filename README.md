@@ -61,9 +61,15 @@ python tinar.py
 /shutdown  🙅
 
 
-DEMO
+DEMO:
 
-https://github.com/RealBey/ThisIsNotRat/assets/85953451/4da75b5f-413a-4584-a07d-94d4b2a1dd6a
+
+
+
+https://github.com/RealBey/ThisIsNotRat/assets/85953451/72259af5-b9ea-4c1e-8ae4-3bcc58eca116
+
+
+
 
 
 
