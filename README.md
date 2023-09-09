@@ -5,7 +5,7 @@
 <p align="center">
 👀Control your windows computeur from telegram 👀
 
-![ideogram (12)](https://github.com/RealBey/ThisIsNotRat/assets/85953451/3e522a85-6b50-4c89-a20c-7c4993580d2e)
+<img src ="https://github.com/RealBey/ThisIsNotRat/assets/85953451/3e522a85-6b50-4c89-a20c-7c4993580d2e" style="max-width: 100%;">
 
 
 
