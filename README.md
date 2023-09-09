@@ -5,6 +5,11 @@
 <p align="center">
 👀Control your windows computeur from telegram 👀
 
+
+![ideogram (10)](https://github.com/RealBey/ThisIsNotRat/assets/85953451/93a16ce3-de38-4de4-b7db-19e772971272)
+
+
+
 ![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/5db40129-5d6a-4a14-ac0d-d94b346807ce)
 
 
