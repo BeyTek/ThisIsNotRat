@@ -10,11 +10,6 @@
 
 
 
-![image](https://github.com/RealBey/ThisIsNotRat/assets/85953451/5db40129-5d6a-4a14-ac0d-d94b346807ce)
-
-
-
-
 ⚙️INSTALLATION⚙️
 
 pip install -r requirements.txt
