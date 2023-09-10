@@ -23,6 +23,8 @@ pip install -r requirements.txt
 
 python tinar.py 
 
+
+
 📣Commands📣
 
 /screen to capture screenshot.🖵
